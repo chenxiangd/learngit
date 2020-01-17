@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 安安
 aa
 
@@ -5,3 +6,8 @@ aa
 
 
 sssssssss
+=======
+test helloworld
+同色同阿斯蒂芬阿萨德安段
+手动阀放假啊
+>>>>>>> 8fbcdd3bb024142bdeb83c71f710ae4fd826c3dd
