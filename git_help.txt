@@ -24,8 +24,7 @@
 	删除：get branch -d branchName
 	提交：git push origin branchName
 
-更新与合并：
-
+更新与合并
 	
 	
 
