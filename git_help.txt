@@ -17,3 +17,15 @@
 7. 上传到Git远程地址
 	git push origin master
 	如果不能上传，就先执行 git pull --rebase origin master ，更新下本地仓库，然后在push
+	
+分支：
+	新建：git checkout -b newbranch
+	切换：get checkout branchNae
+	删除：get branch -d branchName
+	提交：git push origin branchName
+
+更新与合并：
+
+	
+	
+
