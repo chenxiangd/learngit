@@ -1,0 +1,19 @@
+1.配置公钥
+	ssh-keygen -t rsa -C "xxx@163.com"
+2.检查是否连上：
+	ssh -T git@github.com
+3.设置username和emai
+	 git config --global user.name "usename"
+	 git config --global user.email "xxx@163.com"
+4. 添加远程地址
+	git remote add origin git@github.com/usename/learngit.git
+	git remote add origin https://github.com/usename/learngit.git
+	--如果不得行，就先执行git init下
+5.上传文件到缓冲区
+	git add test.txt
+	如果不行，打开仓库.git下config文件，取出URL到浏览器，看是否能打开；如果不能，修改下.git下config文件的URL
+6.提交到HEAD
+	git commit -m "thsi is my first commit"
+7. 上传到Git远程地址
+	git push origin master
+	如果不能上传，就先执行 git pull --rebase origin master ，更新下本地仓库，然后在push
