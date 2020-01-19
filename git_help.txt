@@ -25,7 +25,7 @@
 	提交：git push origin branchName
 
 更新与合并：
-	test
+	
 
 	
 	
