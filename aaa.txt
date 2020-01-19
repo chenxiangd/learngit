@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-安安
-aa
+function aaa() {
+var s = 1;
+var d = 2;
+}
 
-
-
-
-sssssssss
-=======
-test helloworld
-同色同阿斯蒂芬阿萨德安段
-手动阀放假啊
->>>>>>> 8fbcdd3bb024142bdeb83c71f710ae4fd826c3dd
+aaa();
