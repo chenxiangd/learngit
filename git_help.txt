@@ -58,7 +58,7 @@
 	README.md
 
 版本回退：（*clone*）
-	查看历史版本详细信息：git log
+	查看历史版本详细信息：git log，git reflog
 	查看历史版本简要信息：git log --oneline
 	版本回退：
 		回退到上个版本：git reset --hard HEAD^ 
@@ -68,4 +68,6 @@
 查看对象类型：git cat-file -t 哈希值
 查看对象类容：git cat-file -p 哈希值
 通过简短的哈希值获取整个哈希值：git rev-parse 哈希值
+
+
 	
