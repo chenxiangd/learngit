@@ -18,13 +18,13 @@
 	git push origin master
 	如果不能上传，就先执行 git pull --rebase origin master ，更新下本地仓库，然后在push
 	
-分支：
+8.分支：
 	新建：git checkout -b newbranch
 	切换：get checkout branchNae
 	删除：get branch -d branchName
 	提交：git push origin branchName
 
-更新与合并：
+9.更新与合并：
 	git rebase --continue
 	合并分支
 	git merge <branch>
@@ -34,20 +34,20 @@
 	dsfadf
 	sadfadfasdfaasdf
 
-相对提交名：多处可用	
+10.相对提交名：多处可用	
 	HEAD： 最新提交
 	HEAD~：最新提交的前一个提交；（HEAD^）
 	HEAD~~：最新提交的前两个提交；
 	HEAD~~~：最新提交的前三个提交；
 	HEAD~n：最新提交的前n个提交；
-比较差异：
+11.比较差异：
 	工作区与暂存区：git diff 
 	工作区与最新提交： git diff HEAD
 	暂存区与提交：git diff --cached git_help.txt
 	git diff HEAD~ HEAD 
 		
 	
-删除：git rm
+12.删除：git rm
 	如果只是简单地从工作目录中手工删除文件，运行 git status 时就会在 Changes not staged for commit 的提示。
 	要从 Git 中移除某个文件，就必须要从已跟踪文件清单中移除，然后提交。可以用以下命令完成此项工作
 	git rm <file>
@@ -61,7 +61,7 @@
 	git rm –r * 
 	进入某个目录中，执行此语句，会删除该目录下的所有文件和子目录。
 	
-移动或重命名：git mv
+13.移动或重命名：git mv
 	git mv 命令用于移动或重命名一个文件、目录、软连接。
 	我们先把刚移除的 README 添加回来：
 	$ git add README 
@@ -70,7 +70,8 @@
 	$ ls
 	README.md
 
-版本回退：（*clone*）
+14.版本回退：（*clone*）
+	如果还未提交到暂存区，则直接使用 git checkout filename
 	查看历史版本详细信息：git log，git reflog
 	查看历史版本简要信息：git log --oneline
 	版本回退：
