@@ -34,10 +34,18 @@
 	dsfadf
 	sadfadfasdfaasdf
 
+相对提交名：多处可用	
+	HEAD： 最新提交
+	HEAD~：最新提交的前一个提交；（HEAD^）
+	HEAD~~：最新提交的前两个提交；
+	HEAD~~~：最新提交的前三个提交；
+	HEAD~n：最新提交的前n个提交；
 比较差异：
 	工作区与暂存区：git diff 
 	工作区与最新提交： git diff HEAD
 	暂存区与提交：git diff --cached git_help.txt
+	git diff HEAD~ HEAD 
+		
 	
 删除：git rm
 	如果只是简单地从工作目录中手工删除文件，运行 git status 时就会在 Changes not staged for commit 的提示。
@@ -66,7 +74,9 @@
 	查看历史版本详细信息：git log，git reflog
 	查看历史版本简要信息：git log --oneline
 	版本回退：
-		回退到上个版本：git reset --hard HEAD^ 
+		git reset HEAD 将最近提交的内容覆盖到暂存区（==git reset --mixed HEAD），不会影响工作区
+		git reset --hard HEAD^  将最近提交的内容覆盖到暂存区和工作区
+		git reset --soft HEAD^ 最新提交回滚到HEAD^对应的提交，不会影响工作区和暂存区
 		回退到前3次提交之前，以此类推，回退到n次提交之前：git reset --hard HEAD~3 
 		退到/进到，指定commit的哈希码（这次提交之前或之后的提交都会回滚）：git reset --hard commit_id
 		
