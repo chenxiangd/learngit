@@ -57,7 +57,7 @@
 	$ ls
 	README.md
 
-版本回退：
+版本回退：（*clone*）
 	查看历史版本详细信息：git log
 	查看历史版本简要信息：git log --oneline
 	版本回退：
