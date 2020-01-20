@@ -64,3 +64,8 @@
 		回退到上个版本：git reset --hard HEAD^ 
 		回退到前3次提交之前，以此类推，回退到n次提交之前：git reset --hard HEAD~3 
 		退到/进到，指定commit的哈希码（这次提交之前或之后的提交都会回滚）：git reset --hard commit_id
+		
+查看对象类型：git cat-file -t 哈希值
+查看对象类容：git cat-file -p 哈希值
+通过简短的哈希值获取整个哈希值：git rev-parse 哈希值
+	
