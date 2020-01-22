@@ -1,0 +1,15 @@
+grep
+	直接检索字符串：grep "test" <fileName>
+	不区分大小写： grep -i "test" <fileName>
+	显示行数：grep -n "test" <fileName>
+	统计字符串出现的行数：grep -c "test" <fileName>
+	只打印匹配到的字符串：grep -o "test" <fileName> *注：如果一样有多个同时匹配上，则会分行单独打印出来，结合 -n 可以详细看到
+	向前显示n行：grep -Bn "test" <fileName>(比如：grep -B2 "test" <fileName>)
+	向后显示n行：grep -An "test" <fileName>
+	精确匹配，即匹配类容为单独的词：grep -w "test" <fileName>
+	查询不包含行：grep -v "test" <fileName>
+	匹配多个字符串：grep -e "test" -e "aaaa" <fileName>
+	静默模式：
+		grep -q "test" <fileName>  不会有任何输出
+		echo $?  如果匹配到，输出：0；没匹配到：输出：1
+	扩展正则表达式： -E

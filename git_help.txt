@@ -20,8 +20,8 @@
 	
 8.分支：
 	新建：git checkout -b newbranch
-	切换：get checkout branchNae
-	删除：get branch -d branchName
+	切换：git checkout branchNae
+	删除：git branch -d branchName  git branch -D branchName（感觉带强制性样）
 	提交：git push origin branchName
 
 9.更新与合并：
