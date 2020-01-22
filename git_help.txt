@@ -25,14 +25,15 @@
 	提交：git push origin branchName
 
 9.更新与合并：
+	git pull 更新
 	git rebase --continue
 	合并分支
-	git merge <branch>
+	git merge <branch> -m "注释信息"
+	git merge --no-edit A 无注释信息，也不会调用默认编辑器
+	git merge --no-ff A 不适用Fast-forward模式
 	在合并改动之前，你可以使用如下命令预览差异：
 	git diff <source_branch> <target_branch>
-	sadfadfasdfa
-	dsfadf
-	sadfadfasdfaasdf
+	
 
 10.相对提交名：多处可用	
 	HEAD： 最新提交

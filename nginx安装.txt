@@ -1,0 +1,99 @@
+======================参考朱双印个人日志http://www.zsythink.net/archives/3091======================
+Nginx版本：
+	主线版本："Mainline version" 最新版本
+	稳定版本："Stable version" 
+	历史版本："Legacy version"
+Nginx安装步骤：
+一：源安装
+	1. 创建文件/etc/yum.repos.d/nginx.repo，内容如下
+		[nginx]
+		name=nginx repo
+		baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+		gpgcheck=0
+		enabled=1
+	2. 执行如下命令，安装完成
+		yum install -y nginx
+二：编译安装
+	1. 下载源码包并解压，命令如下
+		下载：wget http://nginx.org/download/nginx-1.14.2.tar.gz
+		解压：tar -xf nginx-1.14.2.tar.gz
+	2. 确定编译器是否安装
+		yum install -y gc gcc gcc-c++
+	3. 准备安装目录（自定义）
+		mkdir -p /srv/nginx
+		安装依赖包：yum install -y pcre-devel zlib-devel openssl-devel libxslt-devel GeoIP-devel perl-ExtUtils-Embed
+	4. 进入解压目录，执行configure脚本
+		./configure --prefix=/srv/nginx --with-file-aio --with-http_auth_request_module --with-http_ssl_module --with-http_v2_module --with-http_realip_module --with-http_addition_module --with-http_xslt_module=dynamic --with-http_geoip_module=dynamic --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_degradation_module --with-http_slice_module --with-http_stub_status_module --with-http_perl_module=dynamic --with-pcre --with-pcre-jit --with-stream=dynamic --with-stream_ssl_module
+	5. 如上没有错误，执行make命令
+		make
+		make install
+	*6. 语法高亮配置
+		进入到源码包解压目录
+		# cd nginx-1.14.2/
+		将相应的语法文件拷贝到对应的目录中，即可完成
+		# cp -r contrib/vim/* /usr/share/vim/vimfiles/
+	7. 删除nginx.config默认注释：sed -i '/^[[:space:]]*#/'d nginx.conf
+		
+解决-bash: vim: command not found：
+	rpm -qa|grep vim  或者  yum -y install vim*
+	
+三：Nginx 环境配置
+	1. 创建/etc/profile.d/nginx.sh文件，以便写入环境变量配置。
+	2. 在/etc/profile.d/nginx.sh文件中写入如下内容：
+		nginx_home=/srv/nginx
+		PATH=$nginx_home/sbin:$PATH
+		export PATH
+	3. 重载配置
+		source /etc/profile
+四：简单命令
+	1. 帮助：nginx -h/?
+	2. nginx  -s <xxx>
+		quit: 不再接收新的请求，处理完已接收到的请求再停止服务
+		stop: 立即停止服务
+		reload： 在不停止服务的情况下重载配置文件
+		reopen： 重新打开日志文件
+五：root与alias的差异
+		location /demo {				###########访问/opt/test/demo/nginx.png
+            root   /opt/test;  
+            index nginx.png;
+        }
+        location /demo1 {				###########访问/opt/test/nginx.png，只能在location中使用
+            alias   /opt/test;
+            index nginx1.png;
+        }
+		
+六：信号
+	比如 nginx -s reload 等同于 kill -SUP pid
+	reopen对应USR1信号
+	reload对应HUP信号
+	stop对应TERM信号或者INT信号
+	quit对应QUIT信号
+	
+	我们能向master进程发送如下信号：
+		TERM或者INT：表示立即停止nginx
+		QUIT：表示优雅的停止nginx
+		HUP：重载配置文件
+		USR1：重新打开日志文件
+		USR2：热升级nginx程序
+		WINCH：优雅的关闭相应的worker进程	
+	我们能向worker进程发送如下信号：
+		TERM信号或INT信号
+		QUIT信号
+		USR1信号
+		WINCH信号
+		
+七：热升级(*先备份*)
+	1. 下载新版本 wget http://nginx.org/download/nginx-1.15.9.tar.gz
+	2. 查看老版本编译选项，选择一致
+		nginx -V
+	3. 切换到新版本目录，进行编译
+		cd nginx-1.15.9/
+		./configure xxx（查找的编译信息）
+		make
+	4. 向老版本发送USR2信号： kill -USR2 oldpid
+	5. 停止老版本worker进程： kill -WINCH oldpid
+	6. 停止老版本master进程： kill -QUIT oldpid
+	
+	
+	
+	
